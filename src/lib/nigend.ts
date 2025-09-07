@@ -41,5 +41,5 @@ export async function insertNigendRecord(opts: {
 
   const sql =
     'INSERT INTO ?? (discord_id, nigend, fullname, phone, assigned) VALUES (?, ?, ?, ?, ?)';
-  await pool.query(sql, ['users', discordId, nigend, fullname, phone, assigned]);
+  await pool.query(sql, [TABLE, discordId, nigend, fullname, phone, assigned]);
 }

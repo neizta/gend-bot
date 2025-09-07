@@ -5,6 +5,7 @@ import {
   UserSelectMenuBuilder,
   EmbedBuilder,
   type Client,
+  MessageFlags,
 } from 'discord.js';
 import { generateUniqueNigend, extractFullnameFromDisplayName, insertNigendRecord } from '../lib/nigend.js';
 
@@ -25,7 +26,7 @@ export function wireComponentHandler(client: Client) {
           await interaction.reply({
             content: 'Sélectionne le membre ci-dessous :',
             components: [row],
-            ephemeral: true,
+            flags: MessageFlags.Ephemeral
           });
           return;
         }
@@ -34,7 +35,7 @@ export function wireComponentHandler(client: Client) {
           // TODO: implement delete flow (select target, confirm, delete)
           await interaction.reply({
             content: 'Suppression d’un Nigend — (à implémenter).',
-            ephemeral: true,
+            flags: MessageFlags.Ephemeral
           });
           return;
         }
@@ -93,7 +94,7 @@ export function wireComponentHandler(client: Client) {
       try {
         if (interaction.isRepliable()) {
           if (!interaction.replied && !interaction.deferred) {
-            await interaction.reply({ content: 'Une erreur est survenue.', ephemeral: true });
+            await interaction.reply({ content: 'Une erreur est survenue.', flags: MessageFlags.Ephemeral });
           }
         }
       } catch {}
