@@ -48,8 +48,8 @@ async function registerCommands() {
 }
 
 // 5) Listeners
-client.once('ready', () => {
-  console.log(`Connecté en tant que ${client.user?.tag}.`);
+client.once('clientReady', () => {
+  console.log(`Connecté en tant que ${client.user?.tag}`);
 });
 
 client.on('interactionCreate', async (interaction) => {
