@@ -2,7 +2,7 @@ import type { Pool } from 'mysql2/promise';
 import { pool } from './db.js';
 
 // Change the table name here if needed
-const TABLE = 'nigends';
+const TABLE = 'users';
 
 // Generate a unique 6-digit NIGEND in [223000, 227000]
 export async function generateUniqueNigend(p: Pool = pool): Promise<string> {
@@ -41,5 +41,5 @@ export async function insertNigendRecord(opts: {
 
   const sql =
     'INSERT INTO ?? (discord_id, nigend, fullname, phone, assigned) VALUES (?, ?, ?, ?, ?)';
-  await pool.query(sql, ['nigends', discordId, nigend, fullname, phone, assigned]);
+  await pool.query(sql, ['users', discordId, nigend, fullname, phone, assigned]);
 }
