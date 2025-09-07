@@ -9,13 +9,14 @@ import {
   ChatInputCommandInteraction,
   EmbedBuilder,
   SlashCommandBuilder,
+  InteractionContextType,
 } from 'discord.js';
 import type { CommandModule } from '../types/Commands.js';
 
 const data = new SlashCommandBuilder()
   .setName('nigend') // command name in French as requested
-  .setDescription('Ouvre un panneau pour gérer les Nigend (créer/supprimer).');
-
+  .setDescription('Ouvre un panneau pour gérer les Nigend (créer/supprimer).')
+  .setContexts(InteractionContextType.Guild);
 async function execute(interaction: ChatInputCommandInteraction) {
   const embed = new EmbedBuilder()
     .setTitle('Gestion des Nigend')
